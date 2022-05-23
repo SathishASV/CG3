@@ -2,36 +2,37 @@ package com.inherithiber.enities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="customer")
-public class Customer {
+@Table(name="operator")
+public class Operator {
 
 	@Id
-	int customerId;
-	String firstName;
-	String lastName;
-	String email;
-	String mobile;
-	String city;
-	public Customer() {
+	int operatorId;
+	@OneToOne
+	@JoinColumn(referencedColumnName = "departmentId", name="department_id")
+	Department department;
+	String firstName,lastName,email,mobile,city;
+	public Operator(int operatorId, String firstName, String lastName, String email, String mobile, String city) {
 		super();
-	}
-	public Customer(int customerId, String firstName, String lastName, String email, String mobile, String city) {
-		super();
-		this.customerId = customerId;
+		this.operatorId = operatorId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.mobile = mobile;
 		this.city = city;
 	}
-	public int getCustomerId() {
-		return customerId;
+	public Operator() {
+		super();
 	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public int getOperatorId() {
+		return operatorId;
+	}
+	public void setOperatorId(int operatorId) {
+		this.operatorId = operatorId;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -65,7 +66,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+		return "Operator [operatorId=" + operatorId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", mobile=" + mobile + ", city=" + city + "]";
 	}
 	

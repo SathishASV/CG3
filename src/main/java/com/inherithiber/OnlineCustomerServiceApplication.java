@@ -8,6 +8,7 @@ public class OnlineCustomerServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineCustomerServiceApplication.class, args);
+		System.out.println("run completed");
 	}
 
 }
